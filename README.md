@@ -15,13 +15,13 @@ Node JS
 
 ## Featurs
 
--React Redux
--React Formik
--React Bootstrap
--Filter By Me
--Sorting By Me
--React Router
--Toastify React
--Upload Foto
--CRUD
+- React Redux
+- React Formik
+- React Bootstrap
+- Filter By Me
+- Sorting By Me
+- React Router
+- Toastify React
+- Upload Foto
+- CRUD
 
