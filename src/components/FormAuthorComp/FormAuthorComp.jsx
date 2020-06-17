@@ -112,7 +112,7 @@ const FormAuthorComp = (props) => {
                         <label htmlFor="email">Email</label>
                         <input
                             value={values.email}
-                            disabled={!isAddMode ? isDisable : isDisable}
+                            disabled={!isAddMode ? isDisable : null}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             id="email"
