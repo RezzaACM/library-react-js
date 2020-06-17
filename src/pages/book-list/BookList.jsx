@@ -4,9 +4,8 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom'
 import { ToastContainer, Zoom } from 'react-toastify';
 import toast from '../../helpers/toast';
-// import { css } from 'glamor'
 import './BookList.css'
-import '../../assets/toastifycss/toastContainer.css'
+import '../../assets/toastifycss/toastContainer.css';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
@@ -129,7 +128,7 @@ export default class BookList extends Component {
         }
 
         const filterBooks = this.state.books.filter((book) => {
-            return book.title.toLowerCase().includes(this.state.searchValue.toLocaleLowerCase())
+            return book.title.toLowerCase().includes(this.state.searchValue.toLowerCase())
             // console.log(book);
         })
 
@@ -139,7 +138,11 @@ export default class BookList extends Component {
                     <tr key={book._id} >
                         <td>{index + 1}</td>
                         <td>{book.title}</td>
-                        <td>{book['author']['name']}</td>
+                        <td>
+                            {
+                                !book.author ? null : book.author.name
+                            }
+                        </td>
                         <td>{book.description}</td>
                         <td>{book.stock}</td>
                         <td><img width="130px" height="130px" src={`http://localhost:3000/${book.cover}`} alt={book.cover} /></td>
@@ -173,11 +176,12 @@ export default class BookList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.isLoading ? <tr>
-                            <td colSpan="7" className="text-center">
-                                <div className="spinner-border spinner-border-lg align-center"></div>
-                            </td>
-                        </tr> : bookTable}
+                        {this.state.isLoading ?
+                            <tr>
+                                <td colSpan="7" className="text-center">
+                                    <div className="spinner-border spinner-border-lg align-center"></div>
+                                </td>
+                            </tr> : bookTable}
                         {!bookTable.length && !this.state.isLoading ? <tr>
                             <td colSpan="7" className="text-center">
                                 <div className="p-2">No Users To Display</div>

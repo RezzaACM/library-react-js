@@ -140,10 +140,8 @@ function AddEditBook({ history, match }) {
                                 const fields = ['title', 'stock', 'description', 'author']
                                 fields.map(field => setFieldValue(field, book.data['data'][field], false))
                                 // console.log(book.data['data'])
-                                if (!isAddMode) {
-                                    setBook(book.data['data']['author'])
-                                    setPreview(book.data['data']['cover'])
-                                }
+                                setBook(book.data['data']['author'])
+                                setPreview(book.data['data']['cover'])
                             }, (err) => console.log(err))
                     }
                 }, [setFieldValue], []);
@@ -166,7 +164,7 @@ function AddEditBook({ history, match }) {
                             <div className="form-group col-6">
                                 <label>Author</label>
                                 <Field name="author" as="select" className={'form-control' + (errors.author && touched.author ? ' is-invalid' : '')}>
-                                    {!isAddMode ? <option value={'sadadwadad'}>{book['name']}</option> : <option>Select Author</option>}
+                                    {!isAddMode ? <option>{!book ? "Select Author" : book['name']}</option> : <option>Select Author</option>}
                                     {author.map((res, index) => {
                                         if (!isAddMode)
                                             return (

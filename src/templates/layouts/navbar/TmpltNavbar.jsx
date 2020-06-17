@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import { BrowserRouter as Router, Switch, Link, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import appRoute from '../../../routes/appRoute';
+import './TmpltNavbar.css';
+
 
 export default class TmpltNavbar extends Component {
     render() {
@@ -15,6 +17,7 @@ export default class TmpltNavbar extends Component {
                             <Nav className="m-right">
                                 <NavLink to="/">Home</NavLink>
                                 <NavLink to="/book-list">Book List</NavLink>
+                                <NavLink to="/author">Author</NavLink>
                             </Nav>
                         </div>
                     </Navbar>

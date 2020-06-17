@@ -5,11 +5,32 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+const globalState = {
+  searchValue: ''
+}
+
+// Reducer
+const rootReducer = (state = globalState, action, param) => {
+  if (action.type === "SEARCH_VALUE") {
+    // console.log(action.value)
+    return {
+      ...state,
+      searchValue: action.value
+    }
+  }
+  return state
+}
+
+// store
+const storeRedux = createStore(rootReducer)
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={storeRedux} >
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

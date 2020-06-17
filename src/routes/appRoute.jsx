@@ -3,6 +3,8 @@ import HomePage from "../pages/home_page/HomePage";
 import BookAdd from "../pages/book-add/BookAdd";
 import PageNotFound from "../components/PageNotFound/PageNotFound";
 import AddEditBook from "../components/AddEditBook/AddEditBook";
+import Author from "../pages/author/Author";
+import FormAuthor from "../containers/form-author/FormAuthor";
 
 const appRoute = [
     {
@@ -34,6 +36,24 @@ const appRoute = [
         component: AddEditBook,
         exact: true,
         path: '/edit/:id'
+    },
+    {
+        name: 'Author',
+        component: Author,
+        exact: true,
+        path: '/author'
+    },
+    {
+        name: 'AddEditAuthor',
+        component: FormAuthor,
+        exact: true,
+        path: '/create-author'
+    },
+    {
+        name: 'AddEditAuthor',
+        component: FormAuthor,
+        exact: true,
+        path: '/edit-author/:id'
     },
     {
         name: 'PageNotFound',

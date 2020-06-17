@@ -12,3 +12,19 @@ export const BookValidationSchema = Yup.object({
     stock: Yup.number()
         .required('Stock is required')
 })
+
+
+export const AuthorValidationSchema = Yup.object({
+    name: Yup.string()
+        .min('2', 'Too Short!')
+        .required(),
+    email: Yup.string()
+        .required()
+        .email(),
+    address: Yup.string()
+        .required(),
+    phone: Yup.string()
+        .required()
+    // .matches(phoneRegExp,'Phone Number is Not Valid!')
+
+})
