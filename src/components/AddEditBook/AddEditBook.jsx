@@ -43,11 +43,7 @@ function AddEditBook({ history, match }) {
                 cover: preview
             }
             createBook(newData, setSubmitting)
-            // console.log(newData);
-            // console.log(values['file']);
         } else {
-            // console.log(values);
-            // setSubmitting(false)
             updateBook(values, setSubmitting)
         }
         // console.log(values);
@@ -92,8 +88,7 @@ function AddEditBook({ history, match }) {
         formData.set('title', capitalize(values['title']));
         formData.set('stock', values['stock']);
         formData.set('description', capitalize(values['description']));
-        if (!isAddMode)
-            formData.set('author', values['author']);
+        formData.set('author', values['author']);
         if (file)
             formData.append('cover', file)
         else
@@ -137,9 +132,9 @@ function AddEditBook({ history, match }) {
                     if (!isAddMode) {
                         Axios.get(`http://localhost:3000/api/book/${id}`)
                             .then(book => {
-                                const fields = ['title', 'stock', 'description', 'author']
+                                const fields = ['title', 'stock', 'description']
                                 fields.map(field => setFieldValue(field, book.data['data'][field], false))
-                                // console.log(book.data['data'])
+                                setFieldValue('author', book.data.data.author._id)
                                 setBook(book.data['data']['author'])
                                 setPreview(book.data['data']['cover'])
                             }, (err) => console.log(err))
@@ -164,7 +159,7 @@ function AddEditBook({ history, match }) {
                             <div className="form-group col-6">
                                 <label>Author</label>
                                 <Field name="author" as="select" className={'form-control' + (errors.author && touched.author ? ' is-invalid' : '')}>
-                                    {!isAddMode ? <option>{!book ? "Select Author" : book['name']}</option> : <option>Select Author</option>}
+                                    <option value="">Select Author</option>
                                     {author.map((res, index) => {
                                         if (!isAddMode)
                                             return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ActionType from '../../modules/redux/reducer/globalActionType';
 
 const Search = (props) => {
     return (
@@ -19,7 +20,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapsDispatchToProps = dispatch => ({
-    handleChange: (value) => dispatch({ type: "SEARCH_VALUE", value })
+    handleChange: (value) => dispatch({ type: ActionType.SEARCH_VALUE, value })
 });
 
 export default connect(mapStateToProps, mapsDispatchToProps)(Search);

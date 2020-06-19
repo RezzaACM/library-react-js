@@ -7,22 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
-const globalState = {
-  searchValue: ''
-}
-
-// Reducer
-const rootReducer = (state = globalState, action, param) => {
-  if (action.type === "SEARCH_VALUE") {
-    // console.log(action.value)
-    return {
-      ...state,
-      searchValue: action.value
-    }
-  }
-  return state
-}
+import rootReducer from '../src/modules/redux/reducer/globalReducer'
 
 // store
 const storeRedux = createStore(rootReducer)
