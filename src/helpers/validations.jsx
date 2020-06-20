@@ -28,3 +28,26 @@ export const AuthorValidationSchema = Yup.object({
     // .matches(phoneRegExp,'Phone Number is Not Valid!')
 
 })
+
+export const memberValidationSchema = Yup.object({
+    name: Yup.string()
+        .min('2', 'Too Short!')
+        .required(),
+    email: Yup.string()
+        .required()
+        .email(),
+    password: Yup.string()
+        .required(),
+    confirmPassword: Yup.string()
+        .when('password', (password, schema) => {
+            if (password) return schema.required('Confirm password is required!')
+        })
+        .oneOf([Yup.ref('password')], 'Passwor must match'),
+    phone: Yup.string()
+        .required(),
+    address: Yup.string()
+        .required(),
+    // .matches(phoneRegExp,'Phone Number is Not Valid!')
+
+})
+

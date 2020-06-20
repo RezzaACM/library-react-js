@@ -1,10 +1,9 @@
 import Axios from 'axios';
-
-const RootPath = 'http://localhost:3000/api'
+import config from './config';
 
 const Get = (path) => (data) => {
     const promise = new Promise((resolve, reject) => {
-        Axios.get(`${RootPath}/${path}`)
+        Axios.get(`${config.RootPath}/${path}`)
             .then((result) => {
                 resolve(result.data)
             }, (err) => {
@@ -16,7 +15,7 @@ const Get = (path) => (data) => {
 
 const GetDetail = (path) => (data) => {
     const promise = new Promise((resolve, reject) => {
-        Axios.get(`${RootPath}/${path}/${data}`)
+        Axios.get(`${config.RootPath}/${path}/${data}`)
             .then((res) => {
                 resolve(res.data)
             }, err => {
@@ -28,7 +27,7 @@ const GetDetail = (path) => (data) => {
 
 const Post = (path, data) => {
     const promise = new Promise((resolve, reject) => {
-        Axios.post(`${RootPath}/${path}`, data)
+        Axios.post(`${config.RootPath}/${path}`, data)
             .then((res) => {
                 resolve(res.data)
             }, err => {
@@ -40,7 +39,7 @@ const Post = (path, data) => {
 
 const Delete = (path) => (data) => {
     const promise = new Promise((resolve, reject) => {
-        Axios.delete(`${RootPath}/${path}/${data}`)
+        Axios.delete(`${config.RootPath}/${path}/${data}`)
             .then(res => {
                 resolve(res.data)
             }, err => {
@@ -52,7 +51,7 @@ const Delete = (path) => (data) => {
 
 const Update = (path, data, param) => {
     const promise = new Promise((resolve, reject) => {
-        Axios.post(`${RootPath}/${path}/${param}`, data)
+        Axios.post(`${config.RootPath}/${path}/${param}`, data)
             .then(res => {
                 resolve(res.data)
             }, err => {

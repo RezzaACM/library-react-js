@@ -7,15 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from '../src/modules/redux/reducer/globalReducer'
+import rootReducer from '../src/modules/redux/reducer/globalReducer';
+import { BrowserRouter } from 'react-router-dom';
 
 // store
 const storeRedux = createStore(rootReducer)
 
 ReactDOM.render(
-  <Provider store={storeRedux} >
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={storeRedux} >
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

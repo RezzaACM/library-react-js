@@ -5,8 +5,11 @@ import PageNotFound from "../components/PageNotFound/PageNotFound";
 import AddEditBook from "../components/AddEditBook/AddEditBook";
 import Author from "../pages/author/Author";
 import FormAuthor from "../containers/form-author/FormAuthor";
+import FormMember from "../components/FormMemberComp/FormMember";
+import { Member } from "../pages/member/index";
 
-const appRoute = [
+
+const routes = [
     {
         name: 'HomePage',
         component: HomePage,
@@ -56,6 +59,10 @@ const appRoute = [
         path: '/edit-author/:id'
     },
     {
+        path: "/member",
+        component: Member,
+    },
+    {
         name: 'PageNotFound',
         component: PageNotFound,
         exact: true,
@@ -63,4 +70,4 @@ const appRoute = [
     }
 ]
 
-export default appRoute;
+export default routes;

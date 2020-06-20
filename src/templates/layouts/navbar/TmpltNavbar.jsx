@@ -1,31 +1,29 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
-import appRoute from '../../../routes/appRoute';
+import { NavLink, Link } from 'react-router-dom';
+import routes from '../../../routes/appRoute';
 import './TmpltNavbar.css';
 
+const TmpltNavbar = () => {
+    return (
+        <div>
+            <Fragment>
+                <Navbar bg="dark" variant="dark">
+                    <div className="container">
+                        <Navbar.Brand>Book Simply</Navbar.Brand>
+                        <Nav className="m-right">
+                            <Link to="/">Home</Link>
+                            <Link to="/book-list">Book List</Link>
+                            <Link to="/author">Author</Link>
+                            <Link to="/member">Members</Link>
+                        </Nav>
+                    </div>
+                </Navbar>
+            </Fragment>
+        </div>
+    );
+};
 
-export default class TmpltNavbar extends Component {
-    render() {
-        return (
-            <Router>
-                <Fragment>
-                    <Navbar bg="dark" variant="dark">
-                        <div className="container">
-                            <Navbar.Brand>Book Simply</Navbar.Brand>
-                            <Nav className="m-right">
-                                <NavLink to="/">Home</NavLink>
-                                <NavLink to="/book-list">Book List</NavLink>
-                                <NavLink to="/author">Author</NavLink>
-                            </Nav>
-                        </div>
-                    </Navbar>
-                </Fragment>
-                <Switch>
-                    {appRoute.map((route, index) => <Route key={index} {...route} />)}
-                </Switch>
-            </Router>
-        )
-    }
-}
+export default TmpltNavbar;
+
